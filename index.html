@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+*{margin:0px;padding:0px;}
+body{box-sizing:border-box;}
+.main{width:600px;height:360px;margin:50px auto;background:#fff}
+.cho{width:600px;height:180px;border-bottom:1px solid #ccc;}
+.cho ul li{list-style:none;margin-bottom:8px;}
+.cho ul li b{font-size:14px;font-weight:normal;margin-right:20px;display:inline-block;}
+.cho ul li span{border:2px solid #ccc;font-size:14px;padding:7px;color:#666;display:inline-block;margin-right:5px;cursor:pointer;}
+.cho .on{border:2px solid #e9630a;padding:7px;background:url(img/on.png) bottom right no-repeat;}
+.sub{width:600px;height:130px;margin-top:30px;}
+.sub p{font-size:18px;}
+.sub p span{color:#e9630a;font-weight:normal;}
+.sub p a{font-size:14px;margin-left:20px;}
+.sub p a i{color:#990033;}
+.sub input{width:330px;height:50px;text-align:center;font-size:24px;color:#fff;font-weight:bold;background:#e9630a;border:none;margin-top:30px;}
+</style>
+</head>
+
+<body>
+<div class="main">
+     <div class="cho">
+            <ul>
+                <li class="model">
+                    <b>型号</b>
+                    <span class="on">4.7英寸</span>
+                    <span>5.5英寸</span>
+                </li>
+                <li>
+                    <b>颜色</b>
+                    <span class="on">银色</span>
+                    <span>金色</span>
+                    <span>深空灰色</span>
+                </li>
+                <li class="ROM">
+                    <b>内存</b>
+                    <span class="on">16GB</span>
+                    <span>64GB</span>
+                    <span>128GB</span>
+                </li>
+                <li>
+                    <b>版本</b>
+                    <span class="on">公开版</span>
+                    <span>移动赠费版</span>
+                    <span>联通合约版</span>
+                </li>
+            </ul>
+     </div>
+     <div class="sub">
+        <p>价格：<span>￥<b>1000</b>.00</span><a href="#"><i> 移动赠费版</i>或<i>联通合约版</i>购机价格计算请点击这里</a></p>
+        <input type="button" value="立即购买"/>
+     </div>
+</div>
+<!--块级元素与块级元素不识别空格-->
+<script src="js/jquery.js"></script>
+<script>
+var cur=0;
+     $(".cho ul li span").click(function(){
+		  $(this).addClass("on").siblings().removeClass("on");
+	 })	; 
+	 var pri=5288;//原先的值
+	 var cha=0;	//差值
+	 var tem=0; 
+	 //内存选择 价格改变
+	 $(".ROM span").click(function(){
+		 cur=$(this).index();//cur为ROM（1,2,3）当前被选中的下标值
+	/*	 
+		if(cur==1) $(".sub p b").text(5288); //=是赋值==是判断是否等于
+		else if(cur==2) $(".sub p b").text(6088);
+		else $(".sub p b").text(6888);
+		switch(cur)//老师推荐用switch
+		{
+			case 1:cha=0;break;
+			case 2:cha=800;break;
+			case 3:cha=1600;break;
+			
+		};
+		 $(".sub p b").text(pri + cha);
+	*/
+	   tem=$(".model span.on").index();//tem为获得型号（1,2）当前被选中的下标值
+	   // alert(tem);
+	   if(tem==1)
+	   {
+	      switch(cur)//老师推荐用switch
+		 {
+			case 1:$(".sub p b").text(1000);break;
+			case 2:$(".sub p b").text(2000);break;
+			case 3:$(".sub p b").text(3000);break;
+			
+		 }
+	   }
+	   else
+	   {
+	      switch(cur)//老师推荐用switch
+		 {
+			case 1:$(".sub p b").text(4000);break;
+			case 2:$(".sub p b").text(5000);break;
+			case 3:$(".sub p b").text(6000);break;
+			
+		 }
+	   }
+     });	 
+	$(".model span").click(function(){
+		 cur=$(this).index(); //cur为型号（1,2）当前被选中的下标值
+		/*
+		if(cur==1) $(".sub p b").text(5288); //=是赋值==是判断是否等于
+		else $(".sub p b").text(6888);
+		*/
+        tem=$(".ROM span.on").index();//tem为获得ROM（1,2,3）当前被选中的下标值
+	    // alert(tem);
+	   if(tem==1)
+	   {
+	      switch(cur)//老师推荐用switch
+		 {
+			case 1:$(".sub p b").text(1000);break;
+			case 2:$(".sub p b").text(4000);break;
+			
+		 }
+	   }
+	   else if(tem==2)
+	   {
+	      switch(cur)//老师推荐用switch
+		 {
+			case 1:$(".sub p b").text(2000);break;
+			case 2:$(".sub p b").text(5000);break;
+		 }
+	   }
+	   else
+	   {
+	      switch(cur)//老师推荐用switch
+		 {
+			case 1:$(".sub p b").text(3000);break;
+			case 2:$(".sub p b").text(6000);break;
+		 }
+	   }
+	});
+</script>
+</body>
+</html>
